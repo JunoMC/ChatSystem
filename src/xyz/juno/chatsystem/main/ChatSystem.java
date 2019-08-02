@@ -69,8 +69,8 @@ public class ChatSystem
 											),
 									20, 40, 20).send(CmdsAPI.sender(p).toPlayer());
 							
-							new ActionBar(ChatSystem.ChatSystemInstance().getConfig().getString("had-clean.actionbar")
-									.replaceAll("(\\%byplayer%)", "CONSOLE")
+							new ActionBar(Color(ChatSystem.ChatSystemInstance().getConfig().getString("had-clean.actionbar")
+									.replaceAll("(\\%byplayer%)", "CONSOLE"))
 									).send(CmdsAPI.sender(p).toPlayer());
 							
 							CmdsAPI.sender(p).send(HAD_CLEAN

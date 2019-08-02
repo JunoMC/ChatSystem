@@ -161,8 +161,8 @@ public class Cmds implements CommandExecutor {
 											),
 									20, 40, 20).send(CmdsAPI.sender(p).toPlayer());
 							
-							new ActionBar(ChatSystem.ChatSystemInstance().getConfig().getString("had-clean.actionbar")
-									.replaceAll("(\\%byplayer%)", CmdsAPI.sender(sender).toPlayer().getName())
+							new ActionBar(ChatSystem.Color(ChatSystem.ChatSystemInstance().getConfig().getString("had-clean.actionbar")
+									.replaceAll("(\\%byplayer%)", CmdsAPI.sender(sender).toPlayer().getName()))
 									).send(CmdsAPI.sender(p).toPlayer());
 							
 						});
@@ -175,7 +175,7 @@ public class Cmds implements CommandExecutor {
 										),
 								20, 40, 20).send(CmdsAPI.sender(sender).toPlayer());
 						
-						new ActionBar(ChatSystem.ChatSystemInstance().getConfig().getString("had-clean.actionbar")).send(CmdsAPI.sender(sender).toPlayer());
+						new ActionBar(ChatSystem.Color(ChatSystem.ChatSystemInstance().getConfig().getString("had-clean.actionbar"))).send(CmdsAPI.sender(sender).toPlayer());
 						
 					} else {
 						CmdsAPI.sender(sender).sendPath(NO_PERMISSION.getPath());
@@ -196,8 +196,8 @@ public class Cmds implements CommandExecutor {
 										),
 								20, 40, 20).send(CmdsAPI.sender(p).toPlayer());
 						
-						new ActionBar(ChatSystem.ChatSystemInstance().getConfig().getString("had-clean.actionbar")
-								.replaceAll("(\\%byplayer%)", "CONSOLE")
+						new ActionBar(ChatSystem.Color(ChatSystem.ChatSystemInstance().getConfig().getString("had-clean.actionbar")
+								.replaceAll("(\\%byplayer%)", "CONSOLE"))
 								).send(CmdsAPI.sender(p).toPlayer());
 						
 						CmdsAPI.sender(p).send(HAD_CLEAN
@@ -231,8 +231,8 @@ public class Cmds implements CommandExecutor {
 											),
 									20, 40, 20).send(CmdsAPI.sender(sender).toPlayer());
 							
-							new ActionBar(ChatSystem.ChatSystemInstance().getConfig().getString("had-clean.actionbar")
-									.replaceAll("(\\%byplayer%)", CmdsAPI.sender(sender).toPlayer().getName())
+							new ActionBar(ChatSystem.Color(ChatSystem.ChatSystemInstance().getConfig().getString("had-clean.actionbar")
+									.replaceAll("(\\%byplayer%)", CmdsAPI.sender(sender).toPlayer().getName()))
 									).send(CmdsAPI.sender(sender).toPlayer());
 							
 							CmdsAPI.sender(sender).send(CLEARSUCCESS
@@ -264,8 +264,8 @@ public class Cmds implements CommandExecutor {
 												),
 										20, 40, 20).send(CmdsAPI.sender(PLAYER).toPlayer());
 								
-								new ActionBar(ChatSystem.ChatSystemInstance().getConfig().getString("had-clean.actionbar")
-										.replaceAll("(\\%byplayer%)", CmdsAPI.sender(sender).toPlayer().getName())
+								new ActionBar(ChatSystem.Color(ChatSystem.ChatSystemInstance().getConfig().getString("had-clean.actionbar")
+										.replaceAll("(\\%byplayer%)", CmdsAPI.sender(sender).toPlayer().getName()))
 										).send(CmdsAPI.sender(PLAYER).toPlayer());
 								
 								CmdsAPI.sender(PLAYER).send(HAD_CLEAN
