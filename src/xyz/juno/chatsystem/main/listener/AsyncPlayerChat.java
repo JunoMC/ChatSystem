@@ -1,6 +1,7 @@
 package xyz.juno.chatsystem.main.listener;
 
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
@@ -11,6 +12,7 @@ import xyz.juno.chatsystem.main.settings.SettingsInterface.Settings;
 
 public class AsyncPlayerChat implements Listener {
 	
+	@EventHandler
 	public void onAsyncPlayerChat(AsyncPlayerChatEvent e) {
 		Player PLAYER = e.getPlayer();
 		

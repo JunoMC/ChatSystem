@@ -51,37 +51,40 @@ public class ChatSystem
 			
 			String HAD_CLEAN = ChatSystem.Color(ChatSystem.ChatSystemInstance().getConfig().getString(HADCLEAN.getPath()));
 			
-			Bukkit.getScheduler().runTaskTimerAsynchronously(ChatSystemInstance(), () -> {
-				newChain().async(new TaskChainTasks.GenericTask() {
-					
-					@Override
-					public void runGeneric() {
-						Bukkit.getOnlinePlayers().forEach(p -> {
-							for (int i = 0; i <= 150; i++) {
-								p.sendMessage("");
-							}
-							
-							new Title(ChatSystem.Color(ChatSystem.ChatSystemInstance().getConfig().getString("had-clean.title")
-									.replaceAll("(\\%byplayer%)", "CONSOLE")
-									),
-									ChatSystem.Color(ChatSystem.ChatSystemInstance().getConfig().getString("had-clean.subtitle")
-											.replaceAll("(\\%byplayer%)", "CONSOLE")
-											),
-									20, 40, 20).send(CmdsAPI.sender(p).toPlayer());
-							
-							new ActionBar(Color(ChatSystem.ChatSystemInstance().getConfig().getString("had-clean.actionbar")
-									.replaceAll("(\\%byplayer%)", "CONSOLE"))
-									).send(CmdsAPI.sender(p).toPlayer());
-							
-							CmdsAPI.sender(p).send(HAD_CLEAN
-									.replaceAll("(\\%byplayer%)", "CONSOLE")
-									);
-						});
+			Bukkit.getScheduler().runTaskTimerAsynchronously(ChatSystemInstance(), new Runnable() {
+				@Override
+				public void run() {
+					newChain().async(new TaskChainTasks.GenericTask() {
 						
-						CmdsAPI.sender(Bukkit.getConsoleSender()).sendPath(CLEARALLSUCCESS.getPath());
-					}
-				}).execute();
-			}, 0, getConfig().getInt("auto-clear-chat.interval") * 20);
+						@Override
+						public void runGeneric() {
+							Bukkit.getOnlinePlayers().forEach(p -> {
+								for (int i = 0; i <= 150; i++) {
+									p.sendMessage("");
+								}
+								
+								new Title(ChatSystem.Color(ChatSystem.ChatSystemInstance().getConfig().getString("had-clean.title")
+										.replaceAll("(\\%byplayer%)", "CONSOLE")
+										),
+										ChatSystem.Color(ChatSystem.ChatSystemInstance().getConfig().getString("had-clean.subtitle")
+												.replaceAll("(\\%byplayer%)", "CONSOLE")
+												),
+										20, 40, 20).send(CmdsAPI.sender(p).toPlayer());
+								
+								new ActionBar(Color(ChatSystem.ChatSystemInstance().getConfig().getString("had-clean.actionbar")
+										.replaceAll("(\\%byplayer%)", "CONSOLE"))
+										).send(CmdsAPI.sender(p).toPlayer());
+								
+								CmdsAPI.sender(p).send(HAD_CLEAN
+										.replaceAll("(\\%byplayer%)", "CONSOLE")
+										);
+							});
+							
+							CmdsAPI.sender(Bukkit.getConsoleSender()).sendPath(CLEARALLSUCCESS.getPath());
+						}
+					}).execute();
+				}
+			}, 0, getConfig().getInt("auto-clear-chat.interval") * 20L);
 		}	
 	}
 	
