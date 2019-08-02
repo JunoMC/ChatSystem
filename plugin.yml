@@ -1,0 +1,23 @@
+name: ChatSystem
+version: 1.0
+author: Juno
+main: xyz.juno.chatsystem.main.ChatSystem
+api-version: 1.13, 1.14
+
+commands:
+  chatsystem:
+    aliases: [cs]
+permissions:
+  chatsystem.*:
+    default: op
+    children:
+      chatsystem.reload:
+        default: false
+      chatsystem.info:
+        default: false
+      chatsystem.clearall:
+        default: false
+      chatsystem.clear:
+        default: false
+      chatsystem.help:
+        default: false

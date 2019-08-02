@@ -1,0 +1,32 @@
+Prefix: '&7[&c&l►&7]&r '
+
+cooldown-to-chat: 3
+
+auto-clear-chat:
+  enable: true
+  interval: 30
+  
+had-clean:
+  title: '&a&lKHUNG TRÒ CHUYỆN ĐÃ ĐƯỢC XÓA'
+  subtitle: '&a&lBỞI &f&l%byplayer%'
+  actionbar: '&a&lKHUNG TRÒ CHUYỆN ĐÃ ĐƯỢC XÓA BỞI &f&l%byplayer%'
+  
+messages:
+  help:
+  - '&7[&b◄&7]&e-------------------------------------------&7[&b►&7]'
+  - '&c/{lenh} reload &f- &btải lại cấu hình &8(chatsystem.reload)'
+  - '&c/{lenh} help &f- &bxem thêm nhiều lệnh hơn &8(chatsystem.help)'
+  - '&c/{lenh} clearall &f- &bxóa chat cho tất cả &8(chatsystem.clearall)'
+  - '&c/{lenh} clear <player> &f- &bxóa chat cho người chơi &8(chatsystem.clear)'
+  - '&c/{lenh} info &f- &bxem nguồn gốc tài nguyên &8(chatsystem.info)'
+  - '&7[&b◄&7]&e-------------------------------------------&7[&b►&7]'
+  
+  must-be-player: '&cBạn phải là người chơi để dùng lệnh này!'
+  no-permission: '&cBạn không có quyền dùng lệnh này!'
+  reload-success: '&aReload thành công'
+  reload-error: '&cCó lỗi xảy ra vui lòng kiểm tra lại config!'
+  had-clean-success: '&a&lKHUNG TRÒ CHUYỆN ĐÃ ĐƯỢC XÓA BỞI &f&l%byplayer%'
+  player-is-not-exist: '&f%player% &ckhông online hoặc không tồn tại!'
+  clearall-success: '&aĐã xóa chat cho tất cả thành công!'
+  wait-to-chat: '&cChờ &b%time% giây&c để nhắn tiếp!'
+  clear-success: '&aĐã xóa chat cho &f%toplayer% &athành công!'
