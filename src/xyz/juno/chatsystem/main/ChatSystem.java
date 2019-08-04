@@ -6,6 +6,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import net.md_5.bungee.api.ChatColor;
 import xyz.juno.chatsystem.main.antispam.AntiSpamManager;
+import xyz.juno.chatsystem.main.cmds.Cmds;
 import xyz.juno.chatsystem.main.cmds.CmdsInterface.CmdsAPI;
 import xyz.juno.chatsystem.main.core.BukkitTaskChainFactory;
 import xyz.juno.chatsystem.main.core.TaskChain;
@@ -38,6 +39,7 @@ public class ChatSystem
 		saveDefaultConfig();
 		taskChainFactory = BukkitTaskChainFactory.create(this);
 		antiSpam = new AntiSpamManager(this);
+		getCommand("chatsystem").setExecutor(new Cmds());
 		autoClear();
 		Bukkit.getPluginManager().registerEvents(new AsyncPlayerChat(), ChatSystemInstance());
 	}
@@ -84,7 +86,7 @@ public class ChatSystem
 						}
 					}).execute();
 				}
-			}, 0, getConfig().getInt("auto-clear-chat.interval") * 20L);
+			}, 20, (long) (getConfig().getInt("auto-clear-chat.interval") * 20));
 		}	
 	}
 	

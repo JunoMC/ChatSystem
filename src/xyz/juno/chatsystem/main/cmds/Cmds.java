@@ -150,33 +150,30 @@ public class Cmds implements CommandExecutor {
 								p.sendMessage("");
 							}
 							
-							CmdsAPI.sender(p).send(HAD_CLEAN
-									.replaceAll("(\\%byplayer%)", CmdsAPI.sender(sender).toPlayer().getName())
-									);
-							new Title(ChatSystem.Color(ChatSystem.ChatSystemInstance().getConfig().getString("had-clean.title")
-									.replaceAll("(\\%byplayer%)", CmdsAPI.sender(sender).toPlayer().getName())
-									),
-									ChatSystem.Color(ChatSystem.ChatSystemInstance().getConfig().getString("had-clean.subtitle")
-											.replaceAll("(\\%byplayer%)", CmdsAPI.sender(sender).toPlayer().getName())
-											),
-									20, 40, 20).send(CmdsAPI.sender(p).toPlayer());
-							
-							new ActionBar(ChatSystem.Color(ChatSystem.ChatSystemInstance().getConfig().getString("had-clean.actionbar")
-									.replaceAll("(\\%byplayer%)", CmdsAPI.sender(sender).toPlayer().getName()))
-									).send(CmdsAPI.sender(p).toPlayer());
+							if (CmdsAPI.sender(p).toPlayer() != CmdsAPI.sender(sender).toPlayer()) {
+								CmdsAPI.sender(p).send(HAD_CLEAN
+										.replaceAll("(\\%byplayer%)", CmdsAPI.sender(sender).toPlayer().getName())
+										);
+								Title t1 = new Title(ChatSystem.Color(ChatSystem.ChatSystemInstance().getConfig().getString("had-clean.title")
+										.replaceAll("(\\%byplayer%)", CmdsAPI.sender(sender).toPlayer().getName())
+										),
+										ChatSystem.Color(ChatSystem.ChatSystemInstance().getConfig().getString("had-clean.subtitle")
+												.replaceAll("(\\%byplayer%)", CmdsAPI.sender(sender).toPlayer().getName())
+												),
+										20, 40, 20);
+								
+								t1.send(CmdsAPI.sender(p).toPlayer());
+								
+								ActionBar a1 = new ActionBar(ChatSystem.Color(ChatSystem.ChatSystemInstance().getConfig().getString("had-clean.actionbar")
+										.replaceAll("(\\%byplayer%)", CmdsAPI.sender(sender).toPlayer().getName()))
+										);
+								
+								a1.send(CmdsAPI.sender(p).toPlayer());
+							}
 							
 						});
 						
 						CmdsAPI.sender(sender).sendPath(CLEARALLSUCCESS.getPath());
-						
-						new Title(ChatSystem.Color(ChatSystem.ChatSystemInstance().getConfig().getString("clear-success.title")
-								),
-								ChatSystem.Color(ChatSystem.ChatSystemInstance().getConfig().getString("clear-success.subtitle")
-										),
-								20, 40, 20).send(CmdsAPI.sender(sender).toPlayer());
-						
-						new ActionBar(ChatSystem.Color(ChatSystem.ChatSystemInstance().getConfig().getString("had-clean.actionbar"))).send(CmdsAPI.sender(sender).toPlayer());
-						
 					} else {
 						CmdsAPI.sender(sender).sendPath(NO_PERMISSION.getPath());
 					}
