@@ -26,7 +26,7 @@ public class AsyncPlayerChat implements Listener {
 			e.setCancelled(true);
 			CmdsAPI.sender(PLAYER).send(WAIT
 					.replaceAll("(\\%time%)", String.valueOf(AntiSpam.getTime()))
-					);
+					, WAIT_TO_CHAT.isPrefix());
 		} else {
 			ChatSystem.antiSpam.addTask(CmdsAPI.sender(PLAYER).toPlayer().getName(), ChatSystem.ChatSystemInstance().getConfig().getInt("cooldown-to-chat"));
 		}

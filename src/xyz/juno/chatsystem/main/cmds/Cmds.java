@@ -51,14 +51,14 @@ public class Cmds implements CommandExecutor {
 			if (CmdsAPI.sender(sender).isPlayer()) {
 				if (CmdsAPI.sender(sender).isHas(HELP.getPermission())) {					
 					for (String help : ChatSystem.ChatSystemInstance().getConfig().getStringList(HELP_MESSAGES.getPath())) {
-						CmdsAPI.sender(sender).send(ChatSystem.Color(help.replace("{lenh}", label)));
+						CmdsAPI.sender(sender).send(ChatSystem.Color(help.replace("{lenh}", label)), HELP_MESSAGES.isPrefix());
 					}
 				} else {
-					CmdsAPI.sender(sender).sendPath(NO_PERMISSION.getPath());
+					CmdsAPI.sender(sender).sendPath(NO_PERMISSION.getPath(), NO_PERMISSION.isPrefix());
 				}
 			} else {
 				for (String help : ChatSystem.ChatSystemInstance().getConfig().getStringList(HELP_MESSAGES.getPath())) {
-					CmdsAPI.sender(sender).send(ChatSystem.Color(help.replace("{lenh}", label)));
+					CmdsAPI.sender(sender).send(ChatSystem.Color(help.replace("{lenh}", label)), HELP_MESSAGES.isPrefix());
 				}
 			}
 		}
@@ -68,14 +68,14 @@ public class Cmds implements CommandExecutor {
 				if (CmdsAPI.sender(sender).isPlayer()) {
 					if (CmdsAPI.sender(sender).isHas(HELP.getPermission())) {					
 						for (String help : ChatSystem.ChatSystemInstance().getConfig().getStringList(HELP_MESSAGES.getPath())) {
-							CmdsAPI.sender(sender).send(ChatSystem.Color(help.replace("{lenh}", label)));
+							CmdsAPI.sender(sender).send(ChatSystem.Color(help.replace("{lenh}", label)), HELP_MESSAGES.isPrefix());
 						}
 					} else {
-						CmdsAPI.sender(sender).sendPath(NO_PERMISSION.getPath());
+						CmdsAPI.sender(sender).sendPath(NO_PERMISSION.getPath(), NO_PERMISSION.isPrefix());
 					}
 				} else {
 					for (String help : ChatSystem.ChatSystemInstance().getConfig().getStringList(HELP_MESSAGES.getPath())) {
-						CmdsAPI.sender(sender).send(ChatSystem.Color(help.replace("{lenh}", label)));
+						CmdsAPI.sender(sender).send(ChatSystem.Color(help.replace("{lenh}", label)), HELP_MESSAGES.isPrefix());
 					}
 				}
 			}
@@ -83,7 +83,7 @@ public class Cmds implements CommandExecutor {
 			if (CmdsAPI.sender(sender).isArgumentSimilar(a[0], INFO.getArgument())) {
 				if (CmdsAPI.sender(sender).isPlayer()) {
 					if (CmdsAPI.sender(sender).isHas(INFO.getPermission())) {
-						CmdsAPI.sender(sender).send(ChatSystem.Color("&m                     "));
+						CmdsAPI.sender(sender).send(ChatSystem.Color("&m                     "), false);
 						
 						TextComponent author = new TextComponent(ChatSystem.Color("&fAuthor: "));
 						
@@ -102,14 +102,14 @@ public class Cmds implements CommandExecutor {
 						}
 						
 						CmdsAPI.sender(sender).toPlayer().spigot().sendMessage(message);
-						CmdsAPI.sender(sender).send(ChatSystem.Color("&fVersion: 1.0"));
+						CmdsAPI.sender(sender).send(ChatSystem.Color("&fVersion: 1.0"), false);
 						
-						CmdsAPI.sender(sender).send(ChatSystem.Color("&m                     "));
+						CmdsAPI.sender(sender).send(ChatSystem.Color("&m                     "), false);
 					} else {
-						CmdsAPI.sender(sender).sendPath(NO_PERMISSION.getPath());
+						CmdsAPI.sender(sender).sendPath(NO_PERMISSION.getPath(), NO_PERMISSION.isPrefix());
 					}
 				} else {
-					CmdsAPI.sender(sender).sendPath(MUST_BE_PLAYER.getPath());
+					CmdsAPI.sender(sender).sendPath(MUST_BE_PLAYER.getPath(), MUST_BE_PLAYER.isPrefix());
 				}
 			}
 			
@@ -120,21 +120,21 @@ public class Cmds implements CommandExecutor {
 							ChatSystem.ChatSystemInstance().reloadConfig();
 							ChatSystem.ChatSystemInstance().autoClear();
 						} catch (Exception ex) {
-							CmdsAPI.sender(sender).sendPath(RELOAD_ERROR.getPath());
+							CmdsAPI.sender(sender).sendPath(RELOAD_ERROR.getPath(), RELOAD_ERROR.isPrefix());
 						} finally {
-							CmdsAPI.sender(sender).sendPath(RELOAD_SUCCESS.getPath());
+							CmdsAPI.sender(sender).sendPath(RELOAD_SUCCESS.getPath(), RELOAD_SUCCESS.isPrefix());
 						}
 					} else {
-						CmdsAPI.sender(sender).sendPath(NO_PERMISSION.getPath());
+						CmdsAPI.sender(sender).sendPath(NO_PERMISSION.getPath(), NO_PERMISSION.isPrefix());
 					}
 				} else {
 					try {
 						ChatSystem.ChatSystemInstance().reloadConfig();
 						ChatSystem.ChatSystemInstance().autoClear();
 					} catch (Exception ex) {
-						CmdsAPI.sender(sender).sendPath(RELOAD_ERROR.getPath());
+						CmdsAPI.sender(sender).sendPath(RELOAD_ERROR.getPath(), RELOAD_ERROR.isPrefix());
 					} finally {
-						CmdsAPI.sender(sender).sendPath(RELOAD_SUCCESS.getPath());
+						CmdsAPI.sender(sender).sendPath(RELOAD_SUCCESS.getPath(), RELOAD_SUCCESS.isPrefix());
 					}
 				}
 			}
@@ -152,7 +152,7 @@ public class Cmds implements CommandExecutor {
 							
 							if (CmdsAPI.sender(p).toPlayer() != CmdsAPI.sender(sender).toPlayer()) {
 								CmdsAPI.sender(p).send(HAD_CLEAN
-										.replaceAll("(\\%byplayer%)", CmdsAPI.sender(sender).toPlayer().getName())
+										.replaceAll("(\\%byplayer%)", CmdsAPI.sender(sender).toPlayer().getName()), HADCLEAN.isPrefix()
 										);
 								Title t1 = new Title(ChatSystem.Color(ChatSystem.ChatSystemInstance().getConfig().getString("had-clean.title")
 										.replaceAll("(\\%byplayer%)", CmdsAPI.sender(sender).toPlayer().getName())
@@ -173,9 +173,9 @@ public class Cmds implements CommandExecutor {
 							
 						});
 						
-						CmdsAPI.sender(sender).sendPath(CLEARALLSUCCESS.getPath());
+						CmdsAPI.sender(sender).sendPath(CLEARALLSUCCESS.getPath(), CLEARALLSUCCESS.isPrefix());
 					} else {
-						CmdsAPI.sender(sender).sendPath(NO_PERMISSION.getPath());
+						CmdsAPI.sender(sender).sendPath(NO_PERMISSION.getPath(), NO_PERMISSION.isPrefix());
 					}
 				} else {
 					String HAD_CLEAN = ChatSystem.Color(ChatSystem.ChatSystemInstance().getConfig().getString(HADCLEAN.getPath()));
@@ -198,11 +198,11 @@ public class Cmds implements CommandExecutor {
 								).send(CmdsAPI.sender(p).toPlayer());
 						
 						CmdsAPI.sender(p).send(HAD_CLEAN
-								.replaceAll("(\\%byplayer%)", "CONSOLE")
+								.replaceAll("(\\%byplayer%)", "CONSOLE"), HADCLEAN.isPrefix()
 								);
 					});
 					
-					CmdsAPI.sender(sender).sendPath(CLEARALLSUCCESS.getPath());
+					CmdsAPI.sender(sender).sendPath(CLEARALLSUCCESS.getPath(), CLEARALLSUCCESS.isPrefix());
 				}
 			}
 		}
@@ -217,7 +217,7 @@ public class Cmds implements CommandExecutor {
 							String CLEARSUCCESS = ChatSystem.Color(ChatSystem.ChatSystemInstance().getConfig().getString(CLEAR_SUCCESS.getPath()));
 							
 							for (int i = 0; i <= 150; i++) {
-								CmdsAPI.sender(sender).send("");
+								CmdsAPI.sender(sender).send("", false);
 							}
 							
 							new Title(ChatSystem.Color(ChatSystem.ChatSystemInstance().getConfig().getString("had-clean.title")
@@ -233,7 +233,7 @@ public class Cmds implements CommandExecutor {
 									).send(CmdsAPI.sender(sender).toPlayer());
 							
 							CmdsAPI.sender(sender).send(CLEARSUCCESS
-									.replaceAll("(\\%toplayer%)", CmdsAPI.sender(sender).toPlayer().getName())
+									.replaceAll("(\\%toplayer%)", CmdsAPI.sender(sender).toPlayer().getName()), CLEAR_SUCCESS.isPrefix()
 									);
 						}
 						
@@ -244,13 +244,13 @@ public class Cmds implements CommandExecutor {
 								String NOT_EXIST = ChatSystem.Color(ChatSystem.ChatSystemInstance().getConfig().getString(PLAYER_IS_NOT_EXIST.getPath()));
 								
 								CmdsAPI.sender(sender).send(NOT_EXIST
-										.replaceAll("(\\%player%)", a[1])
+										.replaceAll("(\\%player%)", a[1]), PLAYER_IS_NOT_EXIST.isPrefix()
 										);
 							} else {
 								String CLEARSUCCESS = ChatSystem.Color(ChatSystem.ChatSystemInstance().getConfig().getString(CLEAR_SUCCESS.getPath()));
 								
 								for (int i = 0; i <= 150; i++) {
-									CmdsAPI.sender(PLAYER).send("");
+									CmdsAPI.sender(PLAYER).send("", false);
 								}
 								
 								new Title(ChatSystem.Color(ChatSystem.ChatSystemInstance().getConfig().getString("had-clean.title")
@@ -266,21 +266,21 @@ public class Cmds implements CommandExecutor {
 										).send(CmdsAPI.sender(PLAYER).toPlayer());
 								
 								CmdsAPI.sender(PLAYER).send(HAD_CLEAN
-										.replaceAll("(\\%byplayer%)", CmdsAPI.sender(sender).toPlayer().getName())
+										.replaceAll("(\\%byplayer%)", CmdsAPI.sender(sender).toPlayer().getName()), HADCLEAN.isPrefix()
 										);
 								
 								CmdsAPI.sender(sender).send(CLEARSUCCESS
-										.replaceAll("(\\%toplayer%)", a[1])
+										.replaceAll("(\\%toplayer%)", a[1]), CLEAR_SUCCESS.isPrefix()
 										);
 							}
 							
 						}
 						
 					} else {
-						CmdsAPI.sender(sender).sendPath(NO_PERMISSION.getPath());
+						CmdsAPI.sender(sender).sendPath(NO_PERMISSION.getPath(), NO_PERMISSION.isPrefix());
 					}
 				} else {
-					CmdsAPI.sender(sender).sendPath(MUST_BE_PLAYER.getPath());
+					CmdsAPI.sender(sender).sendPath(MUST_BE_PLAYER.getPath(), MUST_BE_PLAYER.isPrefix());
 				}
 			}
 		}

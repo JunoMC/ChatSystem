@@ -9,8 +9,8 @@ public interface CmdsInterface {
 	
 	boolean isHas(String permisison);
 	boolean isLength(String[] a, int length);
-	void send(String message);
-	void sendPath(String path);
+	void send(String message, boolean prefix);
+	void sendPath(String path, boolean prefix);
 	boolean isArgumentSimilar(String args, String regex);
 	boolean isPlayer();
 	Player toPlayer();
@@ -41,8 +41,12 @@ public interface CmdsInterface {
 		}
 
 		@Override
-		public void send(String message) {
-			sender.sendMessage(message);
+		public void send(String message, boolean prefix) {
+			if (prefix) {
+				sender.sendMessage(ChatSystem.Color(ChatSystem.ChatSystemInstance().getConfig().getString("Prefix")) + message);
+			} else {
+				sender.sendMessage(message);
+			}
 		}
 
 		@Override
@@ -56,11 +60,19 @@ public interface CmdsInterface {
 		}
 
 		@Override
-		public void sendPath(String path) {
+		public void sendPath(String path, boolean prefix) {
 			ChatSystem chatSystem = ChatSystem.ChatSystemInstance();
 			String pf = chatSystem.getConfig().getString("Prefix");
 			
-			String var = ChatSystem.Color(pf + chatSystem.getConfig().getString(path));
+			String var = "";
+			
+			if (prefix) {
+				var = ChatSystem.Color(pf + chatSystem.getConfig().getString(path));
+			} else {
+				var = ChatSystem.Color(chatSystem.getConfig().getString(path));
+			}
+			
+			
 			sender.sendMessage(var);
 		}
 
