@@ -15,7 +15,6 @@ import net.md_5.bungee.api.chat.TextComponent;
 import xyz.juno.chatsystem.main.ChatSystem;
 import xyz.juno.chatsystem.main.cmds.CmdsInterface.CmdsAPI;
 import xyz.juno.chatsystem.main.settings.SettingsInterface.Settings;
-import xyz.juno.chatsystem.textapi.ActionBar;
 import xyz.juno.chatsystem.textapi.Title;
 
 public class Cmds implements CommandExecutor {
@@ -154,21 +153,13 @@ public class Cmds implements CommandExecutor {
 								CmdsAPI.sender(p).send(HAD_CLEAN
 										.replaceAll("(\\%byplayer%)", CmdsAPI.sender(sender).toPlayer().getName()), HADCLEAN.isPrefix()
 										);
-								Title t1 = new Title(ChatSystem.Color(ChatSystem.ChatSystemInstance().getConfig().getString("had-clean.title")
+								Title.sendTitle(CmdsAPI.sender(p).toPlayer(), ChatSystem.Color(ChatSystem.ChatSystemInstance().getConfig().getString("had-clean.title")
 										.replaceAll("(\\%byplayer%)", CmdsAPI.sender(sender).toPlayer().getName())
 										),
 										ChatSystem.Color(ChatSystem.ChatSystemInstance().getConfig().getString("had-clean.subtitle")
 												.replaceAll("(\\%byplayer%)", CmdsAPI.sender(sender).toPlayer().getName())
 												),
 										20, 40, 20);
-								
-								t1.send(CmdsAPI.sender(p).toPlayer());
-								
-								ActionBar a1 = new ActionBar(ChatSystem.Color(ChatSystem.ChatSystemInstance().getConfig().getString("had-clean.actionbar")
-										.replaceAll("(\\%byplayer%)", CmdsAPI.sender(sender).toPlayer().getName()))
-										);
-								
-								a1.send(CmdsAPI.sender(p).toPlayer());
 							}
 							
 						});
@@ -185,17 +176,13 @@ public class Cmds implements CommandExecutor {
 							p.sendMessage("");
 						}
 						
-						new Title(ChatSystem.Color(ChatSystem.ChatSystemInstance().getConfig().getString("had-clean.title")
+						Title.sendTitle(CmdsAPI.sender(p).toPlayer(), ChatSystem.Color(ChatSystem.ChatSystemInstance().getConfig().getString("had-clean.title")
 								.replaceAll("(\\%byplayer%)", "CONSOLE")
 								),
 								ChatSystem.Color(ChatSystem.ChatSystemInstance().getConfig().getString("had-clean.subtitle")
 										.replaceAll("(\\%byplayer%)", "CONSOLE")
 										),
-								20, 40, 20).send(CmdsAPI.sender(p).toPlayer());
-						
-						new ActionBar(ChatSystem.Color(ChatSystem.ChatSystemInstance().getConfig().getString("had-clean.actionbar")
-								.replaceAll("(\\%byplayer%)", "CONSOLE"))
-								).send(CmdsAPI.sender(p).toPlayer());
+								20, 40, 20);
 						
 						CmdsAPI.sender(p).send(HAD_CLEAN
 								.replaceAll("(\\%byplayer%)", "CONSOLE"), HADCLEAN.isPrefix()
@@ -220,18 +207,13 @@ public class Cmds implements CommandExecutor {
 								CmdsAPI.sender(sender).send("", false);
 							}
 							
-							new Title(ChatSystem.Color(ChatSystem.ChatSystemInstance().getConfig().getString("had-clean.title")
+							Title.sendTitle(CmdsAPI.sender(sender).toPlayer(), ChatSystem.Color(ChatSystem.ChatSystemInstance().getConfig().getString("had-clean.title")
 									.replaceAll("(\\%byplayer%)", CmdsAPI.sender(sender).toPlayer().getName())
 									),
 									ChatSystem.Color(ChatSystem.ChatSystemInstance().getConfig().getString("had-clean.subtitle")
 											.replaceAll("(\\%byplayer%)", CmdsAPI.sender(sender).toPlayer().getName())
 											),
-									20, 40, 20).send(CmdsAPI.sender(sender).toPlayer());
-							
-							new ActionBar(ChatSystem.Color(ChatSystem.ChatSystemInstance().getConfig().getString("had-clean.actionbar")
-									.replaceAll("(\\%byplayer%)", CmdsAPI.sender(sender).toPlayer().getName()))
-									).send(CmdsAPI.sender(sender).toPlayer());
-							
+									20, 40, 20);
 							CmdsAPI.sender(sender).send(CLEARSUCCESS
 									.replaceAll("(\\%toplayer%)", CmdsAPI.sender(sender).toPlayer().getName()), CLEAR_SUCCESS.isPrefix()
 									);
@@ -253,18 +235,13 @@ public class Cmds implements CommandExecutor {
 									CmdsAPI.sender(PLAYER).send("", false);
 								}
 								
-								new Title(ChatSystem.Color(ChatSystem.ChatSystemInstance().getConfig().getString("had-clean.title")
+								Title.sendTitle(CmdsAPI.sender(PLAYER).toPlayer(), ChatSystem.Color(ChatSystem.ChatSystemInstance().getConfig().getString("had-clean.title")
 										.replaceAll("(\\%byplayer%)", CmdsAPI.sender(sender).toPlayer().getName())
 										),
 										ChatSystem.Color(ChatSystem.ChatSystemInstance().getConfig().getString("had-clean.subtitle")
 												.replaceAll("(\\%byplayer%)", CmdsAPI.sender(sender).toPlayer().getName())
 												),
-										20, 40, 20).send(CmdsAPI.sender(PLAYER).toPlayer());
-								
-								new ActionBar(ChatSystem.Color(ChatSystem.ChatSystemInstance().getConfig().getString("had-clean.actionbar")
-										.replaceAll("(\\%byplayer%)", CmdsAPI.sender(sender).toPlayer().getName()))
-										).send(CmdsAPI.sender(PLAYER).toPlayer());
-								
+										20, 40, 20);
 								CmdsAPI.sender(PLAYER).send(HAD_CLEAN
 										.replaceAll("(\\%byplayer%)", CmdsAPI.sender(sender).toPlayer().getName()), HADCLEAN.isPrefix()
 										);

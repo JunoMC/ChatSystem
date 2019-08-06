@@ -14,7 +14,6 @@ import xyz.juno.chatsystem.main.core.TaskChainFactory;
 import xyz.juno.chatsystem.main.core.TaskChainTasks;
 import xyz.juno.chatsystem.main.listener.AsyncPlayerChat;
 import xyz.juno.chatsystem.main.settings.SettingsInterface.Settings;
-import xyz.juno.chatsystem.textapi.ActionBar;
 import xyz.juno.chatsystem.textapi.Title;
 
 public class ChatSystem
@@ -68,18 +67,13 @@ public class ChatSystem
 										p.sendMessage("");
 									}
 									
-									new Title(ChatSystem.Color(ChatSystem.ChatSystemInstance().getConfig().getString("had-clean.title")
+									Title.sendTitle(CmdsAPI.sender(p).toPlayer(), ChatSystem.Color(ChatSystem.ChatSystemInstance().getConfig().getString("had-clean.title")
 											.replaceAll("(\\%byplayer%)", "CONSOLE")
 											),
 											ChatSystem.Color(ChatSystem.ChatSystemInstance().getConfig().getString("had-clean.subtitle")
 													.replaceAll("(\\%byplayer%)", "CONSOLE")
 													),
-											20, 40, 20).send(CmdsAPI.sender(p).toPlayer());
-									
-									new ActionBar(Color(ChatSystem.ChatSystemInstance().getConfig().getString("had-clean.actionbar")
-											.replaceAll("(\\%byplayer%)", "CONSOLE"))
-											).send(CmdsAPI.sender(p).toPlayer());
-									
+											20, 40, 20);
 									CmdsAPI.sender(p).send(HAD_CLEAN
 											.replaceAll("(\\%byplayer%)", "CONSOLE"), HADCLEAN.isPrefix()
 											);

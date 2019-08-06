@@ -9,7 +9,6 @@ auto-clear-chat:
 had-clean:
   title: '&a&lKHUNG TRÒ CHUYỆN ĐÃ ĐƯỢC XÓA'
   subtitle: '&a&lBỞI &f&l%byplayer%'
-  actionbar: '&a&lKHUNG TRÒ CHUYỆN ĐÃ ĐƯỢC XÓA BỞI &f&l%byplayer%'
   
 messages:
   help:

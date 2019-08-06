@@ -27,8 +27,10 @@ public class AsyncPlayerChat implements Listener {
 			CmdsAPI.sender(PLAYER).send(WAIT
 					.replaceAll("(\\%time%)", String.valueOf(AntiSpam.getTime()))
 					, WAIT_TO_CHAT.isPrefix());
+			return;
 		} else {
 			ChatSystem.antiSpam.addTask(CmdsAPI.sender(PLAYER).toPlayer().getName(), ChatSystem.ChatSystemInstance().getConfig().getInt("cooldown-to-chat"));
+			return;
 		}
 	}
 }
